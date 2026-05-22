@@ -1,0 +1,489 @@
+/* Importa a fonte Distortion Dos Digital */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* ===== Reset e estilos globais ===== */
+* {
+  font-family: "Barlow Condensed", sans-serif;
+  letter-spacing: 1px;  /* ajuste o valor como quiser */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== HEADER ===== */
+/* Configuração do Header Principal */
+header {
+    background-color: #3b92c9; /* O azul da sua imagem, mude se preferir */
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between; /* Separa a logo do menu */
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+    position: sticky; /* Mantém o menu fixo no topo ao rolar a página */
+    top: 0;
+    z-index: 1000;
+}
+
+/* Ajuste do tamanho da Logo */
+.logo {
+    height: 45px; /* Ajuste conforme o tamanho da sua imagem */
+    width: auto;
+}
+
+/* Configuração da lista do Menu */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Espaçamento perfeito entre os itens */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilização dos Links */
+.nav-menu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease; /* Transição suave para os efeitos */
+    position: relative;
+    padding: 8px 0;
+}
+
+/* Efeito de passar o mouse (Hover) - Linha que surge embaixo */
+.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff; /* Cor da barrinha */
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-menu ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Leve opacidade ao passar o mouse para dar feedback visual */
+.nav-menu ul li a:hover {
+    color: #e0f2fe; 
+}
+
+/* ===== SOBRE ===== */
+.sobre {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #43ADD1, #1C50AD); /* gradient azul da logo */
+  color: white; /* texto claro sobre fundo azul */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  font-weight: 500;
+  border: 2px solid #ffffff; /* borda para dar contraste com vermelho “Up” */
+}
+
+.sobre p {
+    margin: 0;
+}
+
+.sobre p + p {
+    margin-top: 50px; /* adiciona um espaço extra antes do segundo parágrafo */
+
+}
+
+
+/* ===== GRID DE MEMBROS ===== */
+.membros {
+  display: grid;
+  grid-template-columns: repeat(2, 280px);
+  gap: 40px;
+  justify-content: center;
+  margin: 60px auto;
+  padding: 0 15px;
+}
+
+/* ===== CARD ===== */
+.card {
+  perspective: 1000px;
+  width: 280px;
+  height: 400px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.flip-toggle {
+  display: none;
+}
+
+.flip-toggle:checked ~ .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* ===== FACES DO CARD ===== */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%; 
+  padding: 20px;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  display: flex;            /* flex para centralizar verticalmente */
+  flex-direction: column;   /* conteúdo em coluna */
+  justify-content: center;   /* centraliza verticalmente */
+  align-items: center;       /* centraliza horizontalmente */
+  transition: background 0.3s, transform 0.3s;
+  border: 3px solid white;  /* borda simples branca */
+}
+
+/* Frente */
+.card-front {
+  background: linear-gradient(135deg, #43ADD1, #1C50AD); /* azul gradient da logo */
+  color: white;
+}
+
+.card-front img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid white; /* borda na foto */
+}
+
+.card-front h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.card-front p {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+/* Verso */
+.card-back {
+  background: linear-gradient(135deg, #F0563F, #c73920); /* vermelho Up com tom mais escuro */
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* Centraliza todos os textos do verso */
+.card-back h3,
+.card-back p {
+  margin: 5px 0;
+}
+
+/* ===== BOTÃO ===== */
+.btn-primary {
+  display: inline-block;
+  background: #1C50AD; /* azul escuro */
+  color: white;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  background: #43ADD1; /* hover azul mais claro */
+}
+
+
+/* ===== FACES DO CARD ===== */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: background 0.3s;
+  border-radius: 15px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px rgba(67, 173, 209, 0.6), 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Frente */
+.card-front {
+  background: linear-gradient(135deg, #43ADD1, #1C50AD); /* azul gradient da logo */
+  color: white;
+}
+
+.card-front img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid white;
+}
+
+.card-front h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.card-front p {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+/* Verso */
+.card-back {
+  background: linear-gradient(135deg, #F0563F, #A92A28); /* vermelho Up com tom mais escuro */
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-back h3 {
+  margin-bottom: 10px;
+}
+
+.card-back p {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+/* ===== BOTÃO ===== */
+.btn-primary {
+  display: inline-block;
+  background: #1C50AD; /* azul escuro */
+  color: white;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  background: #54CBDD; /* efeito hover com azul mais claro */
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 650px) {
+  .membros {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* =========================================
+   ESTILOS DA SEÇÃO DE PITCH
+   ========================================= */
+
+.pitch-container {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: sans-serif; /* Altere para a fonte padrão do seu site */
+}
+
+.pitch-container h2 {
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.pitch-description {
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+  color: #444;
+  font-size: 1.1rem;
+}
+
+/* Container do vídeo responsivo (Proporção 16:9) */
+.video-wrapper {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* Truque do CSS para manter a proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px; /* Bordas levemente arredondadas no vídeo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container do Botão */
+.btn-container {
+  margin-top: 40px;
+}
+
+/* Estilo do Botão Principal */
+.btn-primary {
+  background-color: #007bff; /* Azul padrão */
+  color: #ffffff;
+  padding: 12px 28px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn-primary:hover {
+  background-color: #F0583E; /* Azul mais escuro */
+  transform: translateY(-2px); /* Efeito sutil de levantar */
+}
+
+
+/* =========================================
+   ESTILOS DA SEÇÃO DE PITCH
+   ========================================= */
+
+.pitch-container {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: inherit; /* Herdando a Barlow Condensed do restante do site */
+}
+
+.pitch-container h2 {
+  margin-bottom: 20px;
+  color: #1C50AD; /* Azul escuro igual ao dos botões e cards */
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.pitch-description {
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+  color: #000000;
+  font-size: 1.2rem;
+}
+
+/* Container do vídeo responsivo (Proporção 16:9) */
+.video-wrapper {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 56.25%; /* Truque do CSS para manter a proporção 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px; /* Bordas arredondadas combinando com o estilo do site */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra suave */
+  border: 3px solid #2ab5e4; /* Borda sutil com o azul claro da logo */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container do Botão */
+.btn-container {
+  margin-top: 40px;
+}
+
+/* Efeito de rolagem suave na página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Estilização do Header / Menu */
+header {
+    background-color: #3A96C7; /* Roxo escuro de fundo (ajuste o tom se necessário) */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Deixa o logo na esquerda e o menu na direita */
+    align-items: center;
+}
+
+/* Remove as bolinhas da lista e zera margens */
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Alinha os itens um ao lado do outro */
+    gap: 30px; /* Espaçamento entre cada palavra do menu */
+}
+
+/* Estilização dos links (letras) */
+.nav-menu ul li a {
+    color: #ffffff; 
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    font-family: sans-serif; /* Fonte limpa, mude para a de sua preferência */
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Efeito visual opcional: muda levemente de cor ao passar o mouse */
+.nav-menu ul li a:hover {
+    color: #E14A36;
+}
+
+        .container-previa {
+            margin: 20px auto; 
+            max-width: 800px; 
+            padding: 0 20px;
+            overflow: hidden; /* Garante que a imagem não morda as bordas se necessário */
+        }
+
+        .img-previa {
+            width: 100%; 
+            height: auto; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Cria o efeito suave de transição */
+            cursor: pointer;
+        }
+
+        /* Efeito ao passar o mouse */
+        .img-previa:hover {
+            transform: scale(1.03); /* Dá um leve zoom de 3% */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Deixa a sombra mais forte e realista */
+        }
+
+        /* Altera a cor do título da seção App e adiciona o espaçamento abaixo dele */
+#app h2 {
+    color: #1C50AD;
+    margin-bottom: 24px; /* Ajuste o valor em px para mais ou para menos se preferir */
+}
